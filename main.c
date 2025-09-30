@@ -14,6 +14,7 @@ int main(){
     // void *buf -> the pointer to the bugger where your bytes should be stored
     // size_t count -> the max num of bytes you want to place in buffer (type as char since it takes bytes)
 
+    
     // This only fails at run time!!
     int fd = open("sample.txt", O_RDONLY);
     if (fd < 0){
