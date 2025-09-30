@@ -6,4 +6,11 @@
 1. Vectorized io
 - In previous versions, each page which is read uses a pread() syscall of 8kb
 - Now seqential reads are combined into fewever vectorized syscalls
+- Basically the optimization done is instead of requesting 8kb for every read,
+you can bundle them into a single request. As in imagine 5 concurent read operations
+1: first 10 rows, 2: middle row, 3: last 6 rows... , instead of makig 5x syscalls, 
+you make a single syscall requesting 5x8kb
 
+-  In order to change configurations, open the postgresql.conf file
+    SHOW config_file;
+sudo nano /path/to/postgresql.conf
