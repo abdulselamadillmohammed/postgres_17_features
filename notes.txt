@@ -1,0 +1,9 @@
+# Reason for this
+- Just to mess around with postgres 17's feateures since version 18 just got released
+
+
+
+1. Vectorized io
+- In previous versions, each page which is read uses a pread() syscall of 8kb
+- Now seqential reads are combined into fewever vectorized syscalls
+
