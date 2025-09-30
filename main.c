@@ -16,6 +16,18 @@ int main(){
         perror("open");
         exit(1);
     }
+    
+    char buffer[128];
+    ssize_t n = read(fd, buffer, sizeof(buffer-1));
+    if (n < 0){
+        perror("read");
+        close(fd);
+        exit(1);
+    }
 
+    buffer[n] = "\0";
+    printf("Read %zd bytes");
+
+    close(fd);
     return 0;
 }
