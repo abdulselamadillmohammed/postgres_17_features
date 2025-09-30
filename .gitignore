@@ -1,0 +1,24 @@
+# Ignore compiled binaries and executables
+a.out
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore object files
+*.o
+*.obj
+
+# Ignore dependency / intermediate files
+*.lo
+*.la
+*.a
+*.lib
+
+# Ignore core dumps
+core
+*.core
+
+# macOS-specific junk
+.DS_Store
