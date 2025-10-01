@@ -1,3 +1,5 @@
+#define _XOPEN_SOURCE 700 // request X/Open and POSIX extensions.
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,6 +55,31 @@ int main(){
 
 
     // preadv (takes an array of offets )
-    // ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+    // From man page: ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
+    int fd3 = open("sample.txt", O_RDONLY);
+    if (fd3 < 0){
+        perror("error on preadv open");
+        exit(1);
+    }
+    
+    // Buffers to read into
+    /*
+    
+    struct iovec {
+        void  *iov_base;   // start address of buffer
+        size_t iov_len;    // number of bytes
+    };
+
+    */
+
+    char buf1[6], buf2[6];
+    struct iovec iov[2];
+    iov[0].iov_base = buf1;
+    iov[0].iov_len = sizeof(buf1) - 1;
+    iov[1].iov_base = buf2;
+    iov[1].iov_len = sizeof(buf2) - 1;
+
+
+
     return 0;
 }
