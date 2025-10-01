@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <sys/uio.h> // required for <sys/uio.h>
 
 
 int main(){
@@ -49,5 +50,9 @@ int main(){
     ssize_t buffer_2_size = pread(fd2, buffer2, sizeof(buffer2) - 1, 4);
     printf("Read %zd bytes. Offseted read: \" %s \" \n", buffer_2_size, buffer2);
     close(fd2);
+
+
+    // preadv (takes an array of offets )
+    // ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
     return 0;
 }
