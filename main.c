@@ -15,11 +15,12 @@ int main(){
     // size_t count -> the max num of bytes you want to place in buffer (type as char since it takes bytes)
 
     char buffer[128];
+    char buffer2[128];
     
     // This only fails at run time!!
     int fd = open("sample.txt", O_RDONLY);
     if (fd < 0){
-        perror("open");
+        perror("error on read open");
         exit(1);
     }
     //                             leave last byte fro /0
@@ -34,5 +35,15 @@ int main(){
     printf("Read %zd bytes. What was read: \" %s \" \n", n, buffer);
 
     close(fd);
+
+
+    // --- pread(2) ---
+    // Only difference is that p read takes an index
+    int fd = open("sample.txt", O_RDONLY);
+    if (fd < 0){
+        perror("error on pread open");
+        exit(1);
+    }
+
     return 0;
 }
