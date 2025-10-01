@@ -24,7 +24,7 @@ int main(){
         exit(1);
     }
     //                             leave last byte fro /0
-    ssize_t n = read(fd, buffer, sizeof(buffer) -1 );
+    ssize_t n = read(fd, buffer, sizeof(buffer) - 1 );
     if (n < 0){
         perror("read");
         close(fd);
@@ -39,11 +39,15 @@ int main(){
 
     // --- pread(2) ---
     // Only difference is that p read takes an index
-    int fd = open("sample.txt", O_RDONLY);
-    if (fd < 0){
+    int fd2 = open("sample.txt", O_RDONLY);
+    if (fd2 < 0){
         perror("error on pread open");
         exit(1);
     }
-
+    //                                                           offset by num bytes 
+    // If offset == 4, skip 4 chars  
+    ssize_t buffer_2_size = pread(fd2, buffer2, sizeof(buffer2) - 1, 4);
+    printf("Read %zd bytes. Offseted read: \" %s \" \n", buffer_2_size, buffer2);
+    close(fd2);
     return 0;
 }
