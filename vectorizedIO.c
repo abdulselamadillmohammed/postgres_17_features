@@ -55,6 +55,24 @@ int main(){
 
 
     // preadv (takes an array of offets )
+    // Apparently not, it does not take an array of offsets, it takes 
+    // an array of buffers for sequential reads?
+
+
+    /*
+    The data transfers performed by readv() and writev() are atomic: 
+    the data written by writev() is written as a single block that is not 
+    intermingled with output from writes in other processes (but see 
+    pipe(7) for an exception); analogously, readv() is guaranteed to read 
+    a contiguous block of data from the file, regardless of read operations 
+    performed in other threads or processes that have file descriptors 
+    referring to the same open file description (see open(2)).
+
+    -- How does the linux OS implement atomic transactions? If postgres wraps around it to 
+       create locks...?
+    
+    */
+
     // From man page: ssize_t preadv(int fd, const struct iovec *iov, int iovcnt, off_t offset);
     int fd3 = open("sample.txt", O_RDONLY);
     if (fd3 < 0){
@@ -79,7 +97,12 @@ int main(){
     iov[1].iov_base = buf2;
     iov[1].iov_len = sizeof(buf2) - 1;
 
+    ssize_t preadv_n = preadv(fd3, iov, 2, 0);
+    if (preadv_n < 0){
+        perror("Failed to perform multiple reads");
+        exit(1);
 
+    }
 
     return 0;
 }
