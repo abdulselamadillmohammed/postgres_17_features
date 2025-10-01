@@ -1,5 +1,5 @@
-#define _XOPEN_SOURCE 700 // request X/Open and POSIX extensions.
-
+// #define _XOPEN_SOURCE 700 // request X/Open and POSIX extensions. -- Linux version
+#define _DARWIN_C_SOURCE
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -91,6 +91,8 @@ int main(){
     */
 
     char buf1[6], buf2[6];
+    buf1[5] = '\0';
+    buf2[5] = '\0';
     struct iovec iov[2];
     iov[0].iov_base = buf1;
     iov[0].iov_len = sizeof(buf1) - 1;
