@@ -108,7 +108,7 @@ int main(){
     printf("buf1: \"%s\"\n", buf1);
     printf("buf2: \"%s\"\n", buf2);
     
-    // Optimization visble with syscall: strace
+    // Optimization visble with syscall: strace, pg_stat_io
     // Slide show over pg17 changes:https://www.postgresql.eu/events/pgconfeu2024/sessions/session/5720/slides/608/Streaming%20I_O.pdf?utm_source=chatgpt.com
     return 0;
 }
