@@ -4,5 +4,10 @@ int main(){
     // Seems like previous queries required O(nlogn) time assuming you have indexes applied (n^2) if you don't
     // The genius of the optimzation is that you take advantage of B+ tree structure for sequential scanning!
     // SQL server has 2 scanning versions (im guessing you manually configure this, instead of auto applied)   
+    // Commands:
+
+    // pg17_features=# create table test (id serial not null);
+    // pg17_features=# create index idx on test(id);
+    
     return 0;
 }
