@@ -110,5 +110,19 @@ int main(){
     
     // Optimization visble with syscall: strace, pg_stat_io
     // Slide show over pg17 changes:https://www.postgresql.eu/events/pgconfeu2024/sessions/session/5720/slides/608/Streaming%20I_O.pdf?utm_source=chatgpt.com
+    
+    /*
+    Instruction on how to configure db to handle n number of kb:
+
+    # postgresql.conf
+    # allow up to 512kB combined reads (typ. max is 1MB on Unix, 128kB on Windows)
+    io_max_combine_limit = '512kB'
+    
+    # Need to reload 
+    SELECT pg_reload_conf();
+
+    */
+    
+    
     return 0;
 }
