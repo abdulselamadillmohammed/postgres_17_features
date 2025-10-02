@@ -8,6 +8,7 @@ int main(){
 
     // pg17_features=# create table test (id serial not null);
     // pg17_features=# create index idx on test(id);
+    // pg17_features=# insert into test select * from generate_series(1,1000000);
     
     return 0;
 }
