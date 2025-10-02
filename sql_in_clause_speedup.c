@@ -10,7 +10,7 @@ int main(){
     // pg17_features=# create index idx on test(id);
     // pg17_features=# insert into test select * from generate_series(1,1000000);
     
-    // pg17_features=# vacuum full test;
+    // pg17_features=# vacuum full test; // Compacts and clean table
     // pg17_features=# explain (analyze,buffers) select * from test where id in (1,2,3,5,6,7,8,9,10);
     // pg17_features=# select idx_scan from pg_stat_user_tables where relname = 'test';
 
